@@ -245,7 +245,7 @@ function CertCarousel({ certs }: { certs: Cert[] }) {
               onClick={() => goTo(idx)}
               animate={{
                 width: idx === active ? 20 : 8,
-                background: idx === active ? certifications[active].accent : "var(--dm-border)",
+                background: idx === active ? certs[active].accent : "var(--dm-border)",
               }}
               transition={{ type: "spring", stiffness: 400, damping: 28 }}
               style={{
@@ -387,7 +387,7 @@ export default function AboutPage() {
       >
         {skills.map((skill, idx) => (
           <motion.div
-            key={idx}
+            key={skill.category}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15 + idx * 0.06 }}

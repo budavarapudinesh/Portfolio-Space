@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useRef, useMemo, createContext, useContext } from "react";
+import React, { Suspense, useRef, useMemo, useEffect, createContext, useContext } from "react";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls, Html, Stars } from "@react-three/drei";
 import * as THREE from "three";
@@ -294,7 +294,7 @@ function IndicatorMarkers({
     });
   }, [markers]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (!centerDotRef.current || !innerRingRef.current || !flashRingRef.current) return;
     const mat = new THREE.Matrix4();
     const cColor = new THREE.Color(color);
@@ -431,7 +431,7 @@ function HeatmapZones({ markers, color }: { markers: MarkerData[]; color: string
     });
   }, [markers]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (!meshRef.current) return;
     const mat = new THREE.Matrix4();
     const cColor = new THREE.Color(color);

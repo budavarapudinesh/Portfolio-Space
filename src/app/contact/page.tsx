@@ -132,8 +132,8 @@ export default function ContactPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{ flex: "1 1 260px" }}
         >
-          {contactInfo.map((item, idx) => (
-            <div key={idx} style={{ marginBottom: 28 }}>
+          {contactInfo.map((item) => (
+            <div key={item.label} style={{ marginBottom: 28 }}>
               <p
                 style={{
                   fontSize: 12,

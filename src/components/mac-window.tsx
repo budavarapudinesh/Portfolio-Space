@@ -13,6 +13,63 @@ interface MacWindowProps {
   children: React.ReactNode;
 }
 
+interface TitleBarProps {
+  title: string;
+  subtitle: string;
+  badge?: string;
+  onClose: () => void;
+  onMin: () => void;
+  onFull: () => void;
+}
+
+function TitleBar({ title, subtitle, badge, onClose, onMin, onFull }: TitleBarProps) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "12px 20px",
+        borderBottom: "1px solid var(--dm-border)",
+        position: "sticky",
+        top: 0,
+        background: "var(--dm-card)",
+        backdropFilter: "blur(12px)",
+        zIndex: 10,
+        transition: "background 0.3s, border-color 0.3s",
+        flexShrink: 0,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <TrafficLights onClose={onClose} onMinimize={onMin} onFullscreen={onFull} />
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+          <span style={{ fontWeight: 600, fontSize: 16, color: "var(--dm-text)" }}>{title}</span>
+          <span style={{ fontSize: 14, color: "var(--dm-text-muted)" }}>{subtitle}</span>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        {badge && (
+          <span
+            style={{
+              padding: "5px 16px",
+              border: "1px solid var(--dm-border-dashed)",
+              borderRadius: 1000,
+              fontSize: 13,
+              color: "var(--dm-text-muted)",
+              fontWeight: 500,
+              marginLeft: 4,
+            }}
+          >
+            {badge}
+          </span>
+        )}
+        <DarkModeToggle />
+      </div>
+    </div>
+  );
+}
+
 const SPRING = { type: "spring" as const, stiffness: 320, damping: 28 };
 const SPRING_FAST = { type: "spring" as const, stiffness: 400, damping: 34 };
 
@@ -59,57 +116,6 @@ export function MacWindow({ title, subtitle, badge, children }: MacWindowProps) 
     setIsMinimized((v) => !v);
   }, [isFullscreen]);
 
-  /** Shared title bar rendered in both normal and fullscreen view */
-  const TitleBar = ({ onClose, onMin, onFull }: {
-    onClose: () => void;
-    onMin: () => void;
-    onFull: () => void;
-  }) => (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "12px 20px",
-        borderBottom: "1px solid var(--dm-border)",
-        position: "sticky",
-        top: 0,
-        background: "var(--dm-card)",
-        backdropFilter: "blur(12px)",
-        zIndex: 10,
-        transition: "background 0.3s, border-color 0.3s",
-        flexShrink: 0,
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <TrafficLights onClose={onClose} onMinimize={onMin} onFullscreen={onFull} />
-        <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-          <span style={{ fontWeight: 600, fontSize: 16, color: "var(--dm-text)" }}>{title}</span>
-          <span style={{ fontSize: 14, color: "var(--dm-text-muted)" }}>{subtitle}</span>
-        </div>
-      </div>
-
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        {badge && (
-          <span
-            style={{
-              padding: "5px 16px",
-              border: "1px solid var(--dm-border-dashed)",
-              borderRadius: 1000,
-              fontSize: 13,
-              color: "var(--dm-text-muted)",
-              fontWeight: 500,
-              marginLeft: 4,
-            }}
-          >
-            {badge}
-          </span>
-        )}
-        <DarkModeToggle />
-      </div>
-    </div>
-  );
-
   return (
     <>
       {/* ── Normal window ── */}
@@ -126,6 +132,9 @@ export function MacWindow({ title, subtitle, badge, children }: MacWindowProps) 
         }}
       >
         <TitleBar
+          title={title}
+          subtitle={subtitle}
+          badge={badge}
           onClose={handleClose}
           onMin={handleMinimize}
           onFull={handleFullscreen}
@@ -179,6 +188,9 @@ export function MacWindow({ title, subtitle, badge, children }: MacWindowProps) 
               }}
             >
               <TitleBar
+                title={title}
+                subtitle={subtitle}
+                badge={badge}
                 onClose={handleClose}
                 onMin={() => setIsFullscreen(false)}
                 onFull={() => setIsFullscreen(false)}

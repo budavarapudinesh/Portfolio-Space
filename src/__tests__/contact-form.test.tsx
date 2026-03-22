@@ -35,9 +35,9 @@ describe("ContactPage — form validation", () => {
 
   it("renders name, email and message fields", () => {
     render(<ContactPage />);
-    expect(screen.getByPlaceholderText(/your name/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/your email/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/your message/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Jane Smith")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("jane@work.com")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Hi Dinesh, I wanna reach out...")).toBeInTheDocument();
   });
 
   it("shows required validation errors when submitted empty", async () => {
@@ -53,12 +53,12 @@ describe("ContactPage — form validation", () => {
   it("shows invalid email error for bad email format", async () => {
     const user = userEvent.setup();
     render(<ContactPage />);
-    await user.type(screen.getByPlaceholderText(/your name/i), "Dinesh");
-    await user.type(screen.getByPlaceholderText(/your email/i), "not-an-email");
-    await user.type(screen.getByPlaceholderText(/your message/i), "Hello!");
-    fireEvent.click(screen.getByRole("button", { name: /send message/i }));
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Dinesh");
+    await user.type(screen.getByPlaceholderText("jane@work.com"), "user@x");
+    await user.type(screen.getByPlaceholderText("Hi Dinesh, I wanna reach out..."), "Hello!");
+    await user.click(screen.getByRole("button", { name: /send message/i }));
     await waitFor(() => {
-      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email address/i)).toBeInTheDocument();
     });
   });
 
@@ -66,9 +66,9 @@ describe("ContactPage — form validation", () => {
     mockFetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
     const user = userEvent.setup();
     render(<ContactPage />);
-    await user.type(screen.getByPlaceholderText(/your name/i), "Dinesh");
-    await user.type(screen.getByPlaceholderText(/your email/i), "dinesh@example.com");
-    await user.type(screen.getByPlaceholderText(/your message/i), "Hello from test!");
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Dinesh");
+    await user.type(screen.getByPlaceholderText("jane@work.com"), "dinesh@example.com");
+    await user.type(screen.getByPlaceholderText("Hi Dinesh, I wanna reach out..."), "Hello from test!");
     fireEvent.click(screen.getByRole("button", { name: /send message/i }));
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledWith(
@@ -89,9 +89,9 @@ describe("ContactPage — form validation", () => {
     mockFetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
     const user = userEvent.setup();
     render(<ContactPage />);
-    await user.type(screen.getByPlaceholderText(/your name/i), "Dinesh");
-    await user.type(screen.getByPlaceholderText(/your email/i), "dinesh@example.com");
-    await user.type(screen.getByPlaceholderText(/your message/i), "Hello!");
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Dinesh");
+    await user.type(screen.getByPlaceholderText("jane@work.com"), "dinesh@example.com");
+    await user.type(screen.getByPlaceholderText("Hi Dinesh, I wanna reach out..."), "Hello!");
     fireEvent.click(screen.getByRole("button", { name: /send message/i }));
     await waitFor(() => {
       expect(screen.getByText(/message sent/i)).toBeInTheDocument();
@@ -105,9 +105,9 @@ describe("ContactPage — form validation", () => {
     });
     const user = userEvent.setup();
     render(<ContactPage />);
-    await user.type(screen.getByPlaceholderText(/your name/i), "Dinesh");
-    await user.type(screen.getByPlaceholderText(/your email/i), "dinesh@example.com");
-    await user.type(screen.getByPlaceholderText(/your message/i), "Hello!");
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Dinesh");
+    await user.type(screen.getByPlaceholderText("jane@work.com"), "dinesh@example.com");
+    await user.type(screen.getByPlaceholderText("Hi Dinesh, I wanna reach out..."), "Hello!");
     fireEvent.click(screen.getByRole("button", { name: /send message/i }));
     await waitFor(() => {
       expect(screen.getByText(/server error/i)).toBeInTheDocument();

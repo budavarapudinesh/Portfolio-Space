@@ -7,10 +7,12 @@ interface ThemeContextType {
   readonly toggle: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType>({ isDark: false, toggle: () => {} });
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function useTheme(): ThemeContextType {
-  return useContext(ThemeContext);
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useTheme must be used within a ThemeProvider");
+  return ctx;
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

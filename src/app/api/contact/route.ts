@@ -78,6 +78,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
+    // Input length validation
+    if (String(name).length > 100 || String(email).length > 254 || String(message).length > 5000) {
+      return NextResponse.json({ error: "Input too long." }, { status: 400 });
+    }
+
+    // Server-side email format validation
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!emailRegex.test(String(email))) {
+      return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY);
     const contactEmail = process.env.CONTACT_EMAIL;
 

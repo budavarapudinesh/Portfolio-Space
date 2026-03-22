@@ -16,3 +16,14 @@
 - [x] Add `<Stars>` component from `@react-three/drei` for the space background.
 - [x] Adjust `Atmosphere` shader to produce a tighter, whitish-blue rim glow.
 - [x] Implement ambient/directional lighting adjustments to ensure the entire globe is brightly visible like the reference.
+
+# Run Portfolio Space
+- [x] Ensure dev server is not hanging.
+- [x] Start development server cleanly.
+- [x] Verify functionality.
+
+# Fix Email Service
+- [x] Investigate missing configuration
+- [x] Add new `RESEND_API_KEY` and `CONTACT_EMAIL` to `.env.local`
+- [x] Restart dev server if needed
+- [x] Verify email configuration is resolved

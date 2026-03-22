@@ -17,7 +17,7 @@ export default function WorkPage() {
       <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
         {projects.map((project, idx) => (
           <motion.div
-            key={idx}
+            key={project.github}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 + idx * 0.12 }}

@@ -11,6 +11,7 @@ const config: Config = {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   testMatch: ["<rootDir>/src/**/__tests__/**/*.{ts,tsx}", "<rootDir>/src/**/*.{spec,test}.{ts,tsx}"],
+  modulePathIgnorePatterns: ["<rootDir>/upbeat-mirzakhani/"],
 };
 
 export default createJestConfig(config);

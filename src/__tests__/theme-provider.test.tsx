@@ -20,23 +20,23 @@ describe("ThemeProvider", () => {
     document.documentElement.removeAttribute("data-theme");
   });
 
-  it("defaults to dark mode", () => {
+  it("defaults to light mode when no preference is saved", () => {
     render(
       <ThemeProvider>
         <ThemeDisplay />
       </ThemeProvider>
     );
-    expect(screen.getByTestId("mode").textContent).toBe("dark");
+    expect(screen.getByTestId("mode").textContent).toBe("light");
   });
 
-  it("toggles from dark to light on button click", () => {
+  it("toggles from light to dark on button click", () => {
     render(
       <ThemeProvider>
         <ThemeDisplay />
       </ThemeProvider>
     );
     fireEvent.click(screen.getByRole("button", { name: /toggle/i }));
-    expect(screen.getByTestId("mode").textContent).toBe("light");
+    expect(screen.getByTestId("mode").textContent).toBe("dark");
   });
 
   it("persists preference to localStorage", () => {
@@ -46,7 +46,7 @@ describe("ThemeProvider", () => {
       </ThemeProvider>
     );
     fireEvent.click(screen.getByRole("button", { name: /toggle/i }));
-    expect(localStorage.getItem("theme")).toBe("light");
+    expect(localStorage.getItem("theme")).toBe("dark");
   });
 
   it("reads persisted preference on mount", () => {
