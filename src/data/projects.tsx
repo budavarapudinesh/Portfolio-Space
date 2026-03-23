@@ -8,6 +8,7 @@ export interface Project {
   github: string;
   gradient: string;
   icon: ReactNode;
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -17,8 +18,9 @@ export const projects: Project[] = [
       "Built a context-aware AI chatbot using Retrieval-Augmented Generation that answers queries from custom documents with high factual accuracy. Achieved 89% answer relevance score and reduced hallucination by 40%.",
     tech: ["Python", "LangChain", "OpenAI API", "FAISS", "Streamlit"],
     date: "Mar 2026 – Apr 2026",
-    github: "https://github.com/budavarapudinesh/ai-chatbot-rag",
+    github: "https://github.com/budavarapudinesh/Safari-Rag",
     gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    image: "/designs/RAG sc.png",
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5">
         <rect x="8" y="12" width="32" height="24" rx="4" />
@@ -34,8 +36,9 @@ export const projects: Project[] = [
       "Developed a real-time automated attendance system using facial recognition that detects, identifies, and logs student attendance from live webcam feed. Achieved 96.3% recognition accuracy across 50+ faces.",
     tech: ["Python", "OpenCV", "DeepFace", "dlib", "Flask", "SQLite"],
     date: "Jan 2026 – Mar 2026",
-    github: "https://github.com/budavarapudinesh/attendance-face-recognition",
+    github: "https://github.com/katariarjunvarma/CampusOne",
     gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    image: "/designs/Screenshot 2026-03-23 at 11.20.47 PM.png",
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5">
         <circle cx="24" cy="20" r="8" />
@@ -51,6 +54,7 @@ export const projects: Project[] = [
     date: "Aug 2025 – Sep 2025",
     github: "https://github.com/budavarapudinesh/resume-screener",
     gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    image: "/designs/resume-screener.png",
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5">
         <rect x="12" y="8" width="24" height="32" rx="3" />

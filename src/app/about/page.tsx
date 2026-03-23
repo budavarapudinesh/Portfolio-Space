@@ -288,209 +288,209 @@ function CertCarousel({ certs }: { certs: Cert[] }) {
 export default function AboutPage() {
   return (
     <PageLayout>
-    <MacWindow
-      title="About"
-      subtitle="My corner on the internet"
-      badge="My corner"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        style={{
-          display: "flex",
-          gap: 40,
-          alignItems: "flex-start",
-          flexWrap: "wrap",
-        }}
+      <MacWindow
+        title="About"
+        subtitle="My corner on the internet"
+        badge="My corner"
       >
-        <div style={{ flex: "1 1 380px" }}>
-          <h2
-            style={{
-              fontSize: 24,
-              fontWeight: 600,
-              lineHeight: 1.4,
-              marginBottom: 24,
-              color: "var(--dm-text)",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            The Internet is an ocean, and you somehow landed on my little
-            island!
-          </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          style={{
+            display: "flex",
+            gap: 40,
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ flex: "1 1 380px" }}>
+            <h2
+              style={{
+                fontSize: 24,
+                fontWeight: 600,
+                lineHeight: 1.4,
+                marginBottom: 24,
+                color: "var(--dm-text)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              The Internet is an ocean, and you somehow landed on my little
+              island!
+            </h2>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+              }}
+            >
+              <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
+                I&apos;m an innovative Machine Learning Engineer and Product
+                Designer with expertise in LLMs, computer vision, and
+                human-centered design. I&apos;m passionate about building
+                intelligent, user-focused products that bridge the gap between
+                cutting-edge AI and real-world usability.
+              </p>
+              <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
+                Beyond work, I&apos;m usually exploring new AI research papers,
+                experimenting with generative models, tinkering with 3D design
+                in Blender, or diving into the latest developments in the world
+                of deep learning.
+              </p>
+              <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
+                I&apos;m drawn to ideas that push the boundaries of what
+                machines can understand in language, in vision, and in
+                interaction.
+              </p>
+            </div>
+          </div>
 
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 16,
+              flex: "0 0 260px",
+              height: 320,
+              borderRadius: 16,
+              overflow: "hidden",
+              position: "relative",
+              flexShrink: 0,
+              boxShadow: "0 0 0 3px var(--dm-border), 0 4px 24px var(--dm-shadow)",
+              border: "1.5px solid var(--dm-border)",
             }}
           >
-            <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
-              I&apos;m an innovative Machine Learning Engineer and Product
-              Designer with expertise in LLMs, computer vision, and
-              human-centered design. I&apos;m passionate about building
-              intelligent, user-focused products that bridge the gap between
-              cutting-edge AI and real-world usability.
-            </p>
-            <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
-              Beyond work, I&apos;m usually exploring new AI research papers,
-              experimenting with generative models, tinkering with 3D design
-              in Blender, or diving into the latest developments in the world
-              of deep learning.
-            </p>
-            <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--dm-text-secondary)" }}>
-              I&apos;m drawn to ideas that push the boundaries of what
-              machines can understand — in language, in vision, and in
-              interaction.
-            </p>
+            <Image
+              src="/profile-v2.jpg"
+              alt="Budavarapu Dinesh"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              priority
+            />
+            {/* Bottom gradient overlay */}
+            <div style={{
+              position: "absolute", bottom: 0, left: 0, right: 0, height: 100,
+              background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)",
+            }} />
           </div>
-        </div>
+        </motion.div>
+
+        <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
+
+        <PillBadge>Technical Skills</PillBadge>
 
         <div
           style={{
-            flex: "0 0 260px",
-            height: 320,
-            borderRadius: 16,
-            overflow: "hidden",
-            position: "relative",
-            flexShrink: 0,
-            boxShadow: "0 0 0 3px var(--dm-border), 0 4px 24px var(--dm-shadow)",
-            border: "1.5px solid var(--dm-border)",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: 20,
           }}
         >
-          <Image
-            src="/profile.jpg"
-            alt="Budavarapu Dinesh"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center top" }}
-            priority
-          />
-          {/* Bottom gradient overlay */}
-          <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: 100,
-            background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)",
-          }} />
-        </div>
-      </motion.div>
-
-      <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
-
-      <PillBadge>Technical Skills</PillBadge>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 20,
-        }}
-      >
-        {skills.map((skill, idx) => (
-          <motion.div
-            key={skill.category}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15 + idx * 0.06 }}
-            style={{
-              padding: 22,
-              border: "1px solid var(--dm-border)",
-              borderRadius: 12,
-              transition: "border-color 0.3s",
-            }}
-          >
-            <h3
+          {skills.map((skill, idx) => (
+            <motion.div
+              key={skill.category}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 + idx * 0.06 }}
               style={{
-                fontSize: 15,
-                fontWeight: 600,
-                color: "var(--dm-text)",
-                marginBottom: 14,
+                padding: 22,
+                border: "1px solid var(--dm-border)",
+                borderRadius: 12,
+                transition: "border-color 0.3s",
               }}
             >
-              {skill.category}
-            </h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {skill.items.map((item, i) => (
-                <span
-                  key={i}
-                  style={{
-                    padding: "5px 12px",
-                    background: "var(--dm-pill-bg)",
-                    borderRadius: 1000,
-                    fontSize: 13,
-                    color: "var(--dm-text-secondary)",
-                    fontWeight: 400,
-                    transition: "background 0.3s, color 0.3s",
-                  }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+              <h3
+                style={{
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: "var(--dm-text)",
+                  marginBottom: 14,
+                }}
+              >
+                {skill.category}
+              </h3>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {skill.items.map((item, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      padding: "5px 12px",
+                      background: "var(--dm-pill-bg)",
+                      borderRadius: 1000,
+                      fontSize: 13,
+                      color: "var(--dm-text-secondary)",
+                      fontWeight: 400,
+                      transition: "background 0.3s, color 0.3s",
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-      <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
+        <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
 
-      <PillBadge>Certifications</PillBadge>
+        <PillBadge>Certifications</PillBadge>
 
-      <CertCarousel certs={certifications} />
+        <CertCarousel certs={certifications} />
 
-      <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
+        <hr className="separator-solid" style={{ margin: "56px 0 0" }} />
 
-      <PillBadge>Achievements</PillBadge>
+        <PillBadge>Achievements</PillBadge>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-        }}
-      >
-        {achievements.map((achievement, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 + idx * 0.08 }}
-            style={{
-              display: "flex",
-              gap: 16,
-              alignItems: "flex-start",
-              padding: 22,
-              border: "1px solid var(--dm-border)",
-              borderRadius: 12,
-              transition: "border-color 0.3s",
-            }}
-          >
-            <span
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
+          {achievements.map((achievement, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 + idx * 0.08 }}
               style={{
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                background: "#fef3c7",
-                fontSize: 18,
-                flexShrink: 0,
+                gap: 16,
+                alignItems: "flex-start",
+                padding: 22,
+                border: "1px solid var(--dm-border)",
+                borderRadius: 12,
+                transition: "border-color 0.3s",
               }}
             >
-              🏆
-            </span>
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.65,
-                color: "var(--dm-text-secondary)",
-              }}
-            >
-              {achievement}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </MacWindow>
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  background: "#fef3c7",
+                  fontSize: 18,
+                  flexShrink: 0,
+                }}
+              >
+                🏆
+              </span>
+              <p
+                style={{
+                  fontSize: 15,
+                  lineHeight: 1.65,
+                  color: "var(--dm-text-secondary)",
+                }}
+              >
+                {achievement}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </MacWindow>
     </PageLayout>
   );
 }

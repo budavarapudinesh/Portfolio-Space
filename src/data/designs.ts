@@ -17,8 +17,8 @@ export const designs: Design[] = [
     category: "3D",
     tool: "Blender",
     gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-    image: "/designs/abstract-render.jpg",
-    year: "2025",
+    image: "/designs/Screenshot 2026-03-23 at 11.32.57 PM.png",
+    year: "2026",
   },
   {
     title: "Lamp — Shapr3D Model",
@@ -35,6 +35,7 @@ export const designs: Design[] = [
     category: "UI/UX",
     tool: "Figma",
     gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    image: "/designs/RAG sc.png",
     year: "2026",
   },
   {
@@ -43,6 +44,7 @@ export const designs: Design[] = [
     category: "UI/UX",
     tool: "Figma",
     gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    image: "/designs/Screenshot 2026-03-23 at 11.20.47 PM.png",
     year: "2026",
   },
   {
@@ -51,6 +53,7 @@ export const designs: Design[] = [
     category: "UI/UX",
     tool: "Adobe XD",
     gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    image: "/designs/resume-screener.png",
     year: "2025",
   },
   {
@@ -59,6 +62,7 @@ export const designs: Design[] = [
     category: "Branding",
     tool: "Illustrator",
     gradient: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+    image: "/designs/PHOTO-2026-03-23-23-01-25.jpg",
     year: "2024",
   },
 ];
@@ -67,8 +71,8 @@ export const categories: DesignCategory[] = ["All", "UI/UX", "3D", "Branding"];
 
 export const toolColors: Record<string, string> = {
   Figma: "#0088ff",
-  "Adobe XD": "#ff61f6",
-  Blender: "#ea7600",
-  Shapr3D: "#1a1a1a",
-  Illustrator: "#ff9a00",
+  "Adobe XD": "#0088ff",
+  Blender: "#0088ff",
+  Shapr3D: "#0088ff",
+  Illustrator: "#0088ff",
 };

@@ -16,14 +16,13 @@ export function useTheme(): ThemeContextType {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   // Persist preference
   useEffect(() => {
     const saved = localStorage.getItem("theme");
-    if (saved === "dark") setIsDark(true);
-    else if (saved === "light") setIsDark(false);
-    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setIsDark(true);
+    if (saved === "light") setIsDark(false);
+    else setIsDark(true); // Default to dark out-of-the-box
   }, []);
 
   useEffect(() => {

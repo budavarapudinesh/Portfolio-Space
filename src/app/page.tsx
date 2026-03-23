@@ -3,23 +3,22 @@
 import { Sidebar } from "@/components/sidebar";
 import { NavBar } from "@/components/nav-bar";
 import { ProfileScene } from "@/components/profile-scene";
-import { Globe } from "@/components/globe";
+import { Chip } from "@/components/chip";
 import { useTheme } from "@/components/theme-provider";
 
 export default function HomePage() {
   const { isDark } = useTheme();
 
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
-      {/* Full-page Background Graphic */}
+    <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden", background: isDark ? "#000" : "#f0f0f0" }}>
+      {/* Background */}
       <div style={{ position: "absolute", inset: 0 }}>
         <ProfileScene />
       </div>
 
-      {/* Full-page 3D Globe with native view offset */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 5, pointerEvents: "auto" }}>
-        <Globe isDark={isDark} />
-        {/* Hint text hovering over full canvas */}
+      {/* 3D Chip */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 5 }}>
+        <Chip isDark={isDark} />
         <div
           style={{
             position: "absolute",

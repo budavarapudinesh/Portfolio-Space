@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     // suppressHydrationWarning: data-theme is set client-side after hydration by ThemeProvider
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider>
           {children}

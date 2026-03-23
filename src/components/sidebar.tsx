@@ -12,19 +12,52 @@ const navItems: { label: string; href: string; external?: boolean }[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-function SunIcon() {
+function AnimatedRubiksCube() {
+  const faces = [
+    { color: "#ff3b30", transform: "translateZ(12px)" }, // Front - Red
+    { color: "#ff9500", transform: "rotateY(180deg) translateZ(12px)" }, // Back - Orange
+    { color: "#007aff", transform: "rotateY(90deg) translateZ(12px)" }, // Right - Blue
+    { color: "#4cd964", transform: "rotateY(-90deg) translateZ(12px)" }, // Left - Green
+    { color: "#ffffff", transform: "rotateX(90deg) translateZ(12px)" }, // Top - White
+    { color: "#ffcc00", transform: "rotateX(-90deg) translateZ(12px)" }, // Bottom - Yellow
+  ];
+
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="4" fill="#f59e0b" />
-      <path d="M12 2v2" />
-      <path d="M12 20v2" />
-      <path d="m4.93 4.93 1.41 1.41" />
-      <path d="m17.66 17.66 1.41 1.41" />
-      <path d="M2 12h2" />
-      <path d="M20 12h2" />
-      <path d="m6.34 17.66-1.41 1.41" />
-      <path d="m19.07 4.93-1.41 1.41" />
-    </svg>
+    <div style={{ perspective: "800px", width: 24, height: 24, margin: "0 2px" }}>
+      <motion.div
+        animate={{ rotateX: [360, 0], rotateY: [0, 360] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {faces.map((f, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              transform: f.transform,
+              background: "#111", // Black inner plastic frame
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateRows: "repeat(3, 1fr)",
+              gap: "1.5px",
+              padding: "1.5px",
+              borderRadius: "2px",
+            }}
+          >
+            {[...Array(9)].map((_, j) => (
+              <div key={j} style={{ background: f.color, borderRadius: "0.5px" }} />
+            ))}
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }
 
@@ -65,7 +98,7 @@ export function Sidebar() {
             textDecoration: "none",
           }}
         >
-          <SunIcon />
+          <AnimatedRubiksCube />
           <span
             style={{
               fontSize: 17,

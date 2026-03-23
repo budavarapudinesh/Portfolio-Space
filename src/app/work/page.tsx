@@ -29,15 +29,52 @@ export default function WorkPage() {
           >
             <div
               style={{
-                background: project.gradient,
                 height: 320,
+                position: "relative",
+                overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                position: "relative",
               }}
             >
+              {project.image ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      zIndex: 0,
+                    }}
+                  />
+                  {/* Dark gradient overlay for text legibility over bright images */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%)",
+                      zIndex: 1,
+                    }}
+                  />
+                </>
+              ) : (
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: project.gradient,
+                    zIndex: 0,
+                  }}
+                />
+              )}
+              
+              <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
               <div style={{ marginBottom: 16 }}>{project.icon}</div>
               <span
                 style={{
@@ -103,7 +140,8 @@ export default function WorkPage() {
               >
                 {project.description.substring(0, 110)}…
               </p>
-            </div>
+              </div> {/* Close nested content div */}
+            </div> {/* Close outer relative div */}
 
             <div
               style={{
@@ -131,7 +169,7 @@ export default function WorkPage() {
                   style={{
                     fontWeight: 600,
                     fontSize: 16,
-                    color: "var(--dm-text)",
+                    color: "#0088ff",
                     whiteSpace: "nowrap",
                   }}
                 >
